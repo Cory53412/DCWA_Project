@@ -1,21 +1,38 @@
-<table>
-    <tr>
-        <th>City code </th>
-        <th>Country Code </th>
-        <th>City name </th>
-        <th>Population </th>
-        <th>is Coastal </th>
-        <th>Area in KM </th>
-    </tr>
-<%cities.forEach((city)=>{ %>
-    <tr>
-        <td> <%= city.cty_code %></td>
-        <td> <%= city.co_code  %></td>
-        <td> <%= city.cty_name %></td>
-        <td> <%= city.population %></td>
-        <td> <%= city.isCoastal %></td>
-        <td> <%= city.areaKM %></td>
-    </tr>
+<html>
+    <body>
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            </style>
+            <table>
+                <tr>
+                    <th>City code </th>
+                    <th>Country Code </th>
+                    <th>City name </th>
+                    <th>Population </th>
+                    <th>is Coastal </th>
+                    <th>Area in KM </th>
+                </tr>
+            <%cities.forEach((city)=>{ %>
+                <tr>
+                    <td> <%= city.cty_code %></td>
+                    <td> <%= city.co_code  %></td>
+                    <td> <%= city.cty_name %></td>
+                    <td> <%= city.population %></td>
+                    <td> <%= city.isCoastal %></td>
+                    <td> <%= city.areaKM %></td>
+                    <td>
+                        <a href="http://localhost:3000/cityDetails"> <button type="button">All Details</button></a>
+                     </td>
+                </tr>
+            
+                <%}) %>
+            </table>
+    </body>
+</html>
 
-    <%}) %>
-</table>
+

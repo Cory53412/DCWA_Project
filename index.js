@@ -1,14 +1,22 @@
 var express = require('express');
 var app = express();
 const port = 3000;
+var MongoDAO = require('./MongoDAO');
 var mySQLDAO = require('./mySQLDAO');
 var countries = require ('./countries');
+
 
 app.set('view engine' , 'ejs');
 
 app.get('/', (req, res) => {
-    res.send('Hello guys!');
+    res.render("home")
 })
+
+//all city functions
+app.get('/cityDetails', (req, res) => {
+    res.render("cityDetails")
+})
+
 app.get('/listCities', (req, res) => {
     mySQLDAO.getCities()
         .then((result) => {
@@ -38,6 +46,8 @@ app.get('/listCities/:city', (req,res)=>{
 })
 
 
+
+//all country functions
 app.get('/listCountries', (req, res) => {
     countries.getCountries()
         .then((result) => {
@@ -71,10 +81,40 @@ app.get('/listCountries/:country' , (req,res)=>{
     })
 })
 
+//rendering the add country page
+app.get('/addCountry', (req, res) => {
+    res.render("addCountry")
+})
+
+app.post("/addCountry", (req, res) => {
+    var myQuery = {
+        sql: 'INSERT INTO country VALUES (?, ?, ?)',
+        values: [req.body.co_code, req.body.co_name, req.body.co_details]
+    }
+    pool.query(myQuery)
+        .then((data) => {
+            res.redirect('/countries')
+            console.log(data)
+        })
+        .catch((error) => {
+           res.send('<h3>Country already exists </h3')
+        })
+})
+
+app.get('/updateCountry', (req, res) => {
+    res.render("updateCountry")
+})
 
 
+//all headOfStare functions
 app.get('/listHeadsOfState', (req, res) => {
-    res.send('Hello Heads of state!')
+    MongoDAO.getheadsOfState()
+    .then((documents)=>{
+        res.send(documents)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
 })
 
 app.listen(port, () => {

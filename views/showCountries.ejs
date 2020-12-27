@@ -1,15 +1,40 @@
-<table>
-    <tr>
-        <th>Country Code </th>
-        <th>Country Name </th>
-        <th>Country Details </th>
-    </tr>
-<%country.forEach((country)=>{ %>
-    <tr>
-        <td> <%= country.co_code %></td>
-        <td> <%= country.co_name  %></td>
-        <td> <%= country.co_details %></td>
-    </tr>
+<html>
 
-    <%}) %>
-</table>
+<body>
+    <h2>Countries</h2>
+    <a href="http://localhost:3000/addCountry"><button type="button">Add Country</button></a> 
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
+    <table>
+        <tr>
+            <th>Country Code </th>
+            <th>Country Name </th>
+            <th>Country Details </th>
+        </tr>
+        <%country.forEach((country)=>{ %>
+            <tr>
+                <td><%= country.co_code %></td>
+                <td><%= country.co_name %></td>
+                <td><%= country.co_details %> </td>
+                   <!--access the method where you can update the country and only this country specified-->
+            <td>
+                <!-- /<%= country.co_code %> add ths to end of updateCountry link -->
+                <a href="http://localhost:3000/updateCountry"> <button type="button">Update</button></a>
+             </td> 
+             <!--access the method where you can delete the country and only this country specified-->
+             <td>
+                 <a href="/countries/<%= country.co_code %>"> <button type="button">Delete</button></a>
+             </td> 
+            </tr>
+            <%}) %>
+    </table>
+</body>
+
+</html>
