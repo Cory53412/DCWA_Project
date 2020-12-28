@@ -31,7 +31,7 @@ app.get('/listCities/:city', (req,res)=>{
     mySQLDAO.getCity(req.params.city )
     .then((result)=>{
         if(result.length > 0){
-            res.send(result);
+            res.render('cityDetails', {cities: result})
         }
         else{
             res.send("<h3> no such city with id: " + req.params.city)      
@@ -85,20 +85,31 @@ app.get('/addCountry', (req, res) => {
     res.render("addCountry");
 })
 
+//rendering the update country page
+app.get('/updateCountry/:country', (req, res) => {
+    home.getCountries(req.params.country)
+    .then((result)=>{
+        console.log(result)
+        res.render("update", {country: result[0]})
+    })
+    .catch((error)=>{
+        res.send(error)
+    })
+})
 
-app.post("/addCountry", (req, res) => {
+//post method to post the query result to the server
+app.post("/updateCountry", (req, res) => {
     var myQuery = {
-        sql: 'INSERT INTO country VALUES (?, ?, ?)',
-        values: [req.body.co_code, req.body.co_name, req.body.co_details]
+        sql: 'update country set co_name =?, co_details=? where co_code =?',
+        values: [req.body.co_name, req.body.co_details, req.body.co_code]
     }
     pool.query(myQuery)
         .then((data) => {
-            res.redirect('/countries');
-            console.log(data);
+            //res.send(data)
+            res.redirect('/countries')
         })
-        .catch((err) => {
-           res.send('<h3>Country already exists </h3');
-           console.log(err);
+        .catch((error) => {
+            console.log(error)
         })
 })
 
