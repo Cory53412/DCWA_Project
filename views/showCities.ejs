@@ -1,5 +1,6 @@
 <html>
     <body>
+        <h1> Show Cities</h1>
         <style>
             table,
             th,
@@ -17,21 +18,22 @@
                     <th>is Coastal </th>
                     <th>Area in KM </th>
                 </tr>
-            <%cities.forEach((city)=>{ %>
+            <%cities.forEach((cities)=>{ %>
                 <tr>
-                    <td> <%= city.cty_code %></td>
-                    <td> <%= city.co_code  %></td>
-                    <td> <%= city.cty_name %></td>
-                    <td> <%= city.population %></td>
-                    <td> <%= city.isCoastal %></td>
-                    <td> <%= city.areaKM %></td>
+                    <td> <%= cities.cty_code %></td>
+                    <td> <%= cities.co_code  %></td>
+                    <td> <%= cities.cty_name %></td>
+                    <td> <%= cities.population %></td>
+                    <td> <%= cities.isCoastal %></td>
+                    <td> <%= cities.areaKM %></td>
                     <td>
-                        <a href="http://localhost:3000/cityDetails"> <button type="button">All Details</button></a>
+                        <a href="/listCities/<%= cities.cty_code %>"> <button type="button">All Details</button></a>
                      </td>
                 </tr>
-            
                 <%}) %>
             </table>
+        </br>
+            <a href="http://localhost:3000/">Home</a>
     </body>
 </html>
 

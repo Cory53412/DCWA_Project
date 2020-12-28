@@ -29,4 +29,8 @@ var getheadsOfState = function(){
   })
 }
 
+var addHeadOfState = function(){
+  
+}
+
 module.exports = {getheadsOfState};

@@ -1,36 +1,37 @@
 <html>
 
 <body>
-    <h1>All City Details</h1>
-
-    <form action="/cityDetails" method="POST">
-        <label>City Code </label>
-        <input type="text" name="cty_code">
-        </br>
-        <label>City Name</label>
-        <input type="text" name="cty_name">
-        </br>
-        <label> City Population</label>
-        <input type="text" name="population">
-        </br>
-        <label>By the sea</label>
-        <input type="text" name="isCoastel">
-        </br>
-        <label>Area (KM)</label>
-        <input type="text" name="AreaKM">
-        </br>
-        </br>
-        </br>
-        <label>Country Code </label>
-        <input type="text" name="co_code">
-        </br>
-        <label>Country Name</label>
-        <input type="text" name="co_code">
-        </br>
-         <input type="submit" value="Update City">
-    </form>
-
-    <a href="http://localhost:3000/">Home</a>
+       <!--Make a border for the tables-->
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        </style>
+           <!--Create a table to display the data-->
+    <table>
+        <tr>
+            <th>City Code</th>
+            <th>Country Code</th>
+            <th>City Name</th>
+            <th>population</th>
+            <th>isCoastal</th>
+            <th>areaKM</th>
+               <!--access the data by calling cities from index.js and displaying its info-->
+        </tr><% cities.forEach((cities)=>{%><tr>
+            <td><%= cities.cty_code %></td>
+            <td><%= cities.co_code %></td>
+            <td><%= cities.cty_name %></td>
+            <td><%= cities.population %></td>
+            <td><%= cities.isCoastal %></td>
+            <td><%= cities.areaKM %></td>
+        </tr>
+        <%})%>
+    </table>
+       <!--Button to link back to cities page-->
+       <a href="http://localhost:3000/">Home</a>
+      
 </body>
+
 
 </html>
