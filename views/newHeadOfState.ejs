@@ -1,0 +1,26 @@
+<html>
+
+<body>
+    <a href="http://localhost:3000/addHeadOfState"><button type="button">Add Head Of State</button></a> 
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        </style> 
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>headOfState</th>
+        </tr>
+    </tr><% headOfState.forEach((headOfState)=>{%><tr>
+        <td><%= headOfState._id %></td>
+        <td><%= headOfState.headOfState %></td>
+    </tr>
+    <%})%>
+    </table>
+</body>
+</html>
