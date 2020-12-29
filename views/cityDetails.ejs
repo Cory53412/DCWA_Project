@@ -1,5 +1,6 @@
-<html>
 
+<!-- A page to display city details presented in table format -->
+<html>
 <body>
     <style>
         table, th, td {
@@ -15,6 +16,7 @@
             <th>population</th>
             <th>isCoastal</th>
             <th>areaKM</th>
+    <!--accessing data by calling cities from index.js and displaying its info-->
         </tr><% cities.forEach((cities)=>{%><tr>
             <td><%= cities.cty_code %></td>
             <td><%= cities.co_code %></td>

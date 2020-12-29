@@ -1,11 +1,11 @@
+<!-- edit country page where user can replace previously entered details -->
 <html>
-
 <body>
     <h1>Edit Country</h1>
 
     <form action="/updateCountry" method="POST">
         <label>Country Code </label>
-        <input type="text" name="co_code">
+        <input value="<%= country.co_code %>" name="co_code" readonly>
         </br>
         <label>Country Name</label>
         <input type="text" name="co_code">
@@ -16,6 +16,7 @@
         <input type="submit" value="Update Country">
     </form>
 
+    <!-- Link back to home page -->
     <a href="http://localhost:3000/">Home</a>
 </body>
 

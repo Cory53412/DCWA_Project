@@ -1,12 +1,12 @@
 <html>
 
+<!-- Countries page that displays all countries in the database  -->
 <body>
     <h2>Countries</h2>
+    <!-- Button to bring user to add countries page -->
     <a href="http://localhost:3000/addCountry"><button type="button">Add Country</button></a> 
     <style>
-        table,
-        th,
-        td {
+        table, th,  td {
             border: 1px solid black;
             border-collapse: collapse;
         }
@@ -17,25 +17,28 @@
             <th>Country Code </th>
             <th>Country Name </th>
             <th>Country Details </th>
-            <th>update</th>
-            <th>delete</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
+        <!--accessing data by calling country from index.js and displaying its info-->
         <%country.forEach((country)=>{ %>
             <tr>
                 <td><%= country.co_code %></td>
                 <td><%= country.co_name %></td>
                 <td><%= country.co_details %> </td>
             <td>
-                <!-- /<%= country.co_code %> add ths to end of updateCountry link -->
-                <a href="http://localhost:3000/updateCountry/"> <button type="button">Update</button></a>
+                <!-- button that brings you too update user page -->
+                <a href="http://localhost:3000/updateCountry/<%= country.co_code %>"> <button type="button">Update</button></a>
              </td> 
              <td>
+                 <!-- This button deletes country if there is no fk linking to cities table -->
                  <a href="/listCountries/<%= country.co_code %>"> <button type="button">Delete</button></a>
              </td> 
             </tr>
             <%}) %>
     </table>
 </br>
+<!-- Link to return user to home page -->
              <a href="http://localhost:3000/">Home</a>
 </body>
 
